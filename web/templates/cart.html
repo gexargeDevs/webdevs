@@ -1,0 +1,287 @@
+{% load static %}
+{% load my_filters %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>GEXARGE | კალათა</title>
+    
+        <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    
+    </head>
+<body>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	{% include "staticpages/header.html" %}
+
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text font-alk-rounded">
+						<p>GEXARGE</p>
+						<h1>კალათა</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+<!-- cart -->
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                            <tr class="table-head-row">
+                                <th class="product-remove"></th>
+                                <th class="product-image">პროდუქტის სურათი</th>
+                                <th class="product-name">სახელი</th>
+                                <th class="product-price">ფასი</th>
+                                <th class="product-quantity">რაოდენობა</th>
+                                <th class="product-total">ჯამი</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items-container">
+                            <!-- აქ დაიმატება კალათის ელემენტები JavaScript-ით -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="total-section">
+                    <table class="total-table">
+                        <thead class="total-table-head">
+                            <tr class="table-total-row">
+                                <th>ჯამი</th>
+                                <th>ფასი</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="total-data">
+                                <td><strong>ქვეთით: </strong></td>
+                                <td id="subtotal">0.00 ლარი</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>მიტანა: </strong></td>
+                                <td id="shipping">5.00 ლარი</td>
+                            </tr>
+                            <tr class="total-data">
+                                <td><strong>სულ: </strong></td>
+                                <td id="total-price">5.00 ლარი</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <a href="#" class="boxed-btn d-none" id="update-cart">კალათის განახლება</a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="boxed-btn">გადახდა</button>
+                    </div>
+                </div>
+
+                <div class="coupon-section">
+                    <h3>ფასდაკლების კოდი</h3>
+                    <div class="coupon-form-wrap">
+                        <form id="coupon-form">
+                            <p><input type="text" placeholder="კოდი"></p>
+                            <p><input type="submit" value="გამოყენება"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- end cart -->
+	
+	{% include "staticpages/footer.html" %}
+	
+	<script src="{% static 'assets/js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/sticker.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://kit.fontawesome.com/8340299b99.js" crossorigin="anonymous"></script>
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+            // კალათის მონაცემების ჩატვირთვა localStorage-დან
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.getElementById('cart-items-container');
+            const subtotalElement = document.getElementById('subtotal');
+            const shippingElement = document.getElementById('shipping');
+            const totalPriceElement = document.getElementById('total-price');
+            const updateCartBtn = document.getElementById('update-cart');
+
+            // კალათის გამოსახვა
+            function displayCart() {
+                cartContainer.innerHTML = '';
+
+                let subtotal = 0;
+
+                if (cart.length === 0) {
+                    cartContainer.innerHTML = '<tr><td colspan="6" class="text-center">კალათა ცარიელია</td></tr>';
+                } else {
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        subtotal += itemTotal;
+
+                        const row = document.createElement('tr');
+                        row.className = 'table-body-row';
+                        row.innerHTML = `
+                            <td class="product-remove">
+                                <a href="#" class="remove-item" data-id="${item.id}">
+                                    <i class="far fa-window-close"></i>
+                                </a>
+                            </td>
+                            <td class="product-image"><img src="/${item.image}" alt="${item.name}"></td>
+                            <td class="product-name">${item.name}</td>
+                            <td class="product-price">${item.price} ლარი</td>
+                            <td class="product-quantity">
+                                <input type="number" value="${item.quantity}" min="1" class="item-quantity" data-id="${item.id}">
+                            </td>
+                            <td class="product-total">${itemTotal.toFixed(2)} ლარი</td>
+                        `;
+                        cartContainer.appendChild(row);
+                    });
+                }
+
+                // გამოვთვალოთ ჯამი და მიტანის ღირებულება
+                const shippingCost = 5.00; // მიტანის ფიქსირებული ღირებულება
+                const freeShippingThreshold = 149.00;
+                let shipping = subtotal >= freeShippingThreshold ? 0 : shippingCost;
+                const total = subtotal + shipping;
+
+                subtotalElement.textContent = subtotal.toFixed(2) + ' ლარი';
+                shippingElement.textContent = shipping === 0 ? 'უფასო მიტანა' : shipping.toFixed(2) + ' ლარი';
+                totalPriceElement.textContent = total.toFixed(2) + ' ლარი';
+
+                // დავამატოთ მოსმენის მოვლენები მხოლოდ იმ შემთხვევაში, თუ კალათა არ არის ცარიელი
+                if (cart.length > 0) {
+                    addEventListeners();
+                } else {
+                    // თუ კალათა ცარიელია, დარწმუნდით, რომ წაშლილია წინა event listener-ები
+                    document.querySelectorAll('.remove-item').forEach(button => {
+                        button.removeEventListener('click', removeItem); // საჭიროა ფუნქციის ცალკე გამოტანა event listener-ისთვის
+                    });
+                    document.querySelectorAll('.item-quantity').forEach(input => {
+                        input.removeEventListener('change', updateQuantity); // საჭიროა ფუნქციის ცალკე გამოტანა event listener-ისთვის
+                    });
+                }
+            }
+
+            // ელემენტების მოსმენის მოვლენები
+            function addEventListeners() {
+                // წაშლის ღილაკები
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const id = this.getAttribute('data-id');
+                        removeItem(id);
+                    });
+                });
+
+                // რაოდენობის შეცვლა
+                document.querySelectorAll('.item-quantity').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const id = this.getAttribute('data-id');
+                        const quantity = parseInt(this.value);
+                        updateQuantity(id, quantity);
+                    });
+                });
+            }
+
+            // პროდუქტის წაშლა
+            function removeItem(id) {
+                cart = cart.filter(item => item.id !== id);
+                saveCart();
+                displayCart();
+            }
+
+            // რაოდენობის განახლება
+            function updateQuantity(id, quantity) {
+                const item = cart.find(item => item.id === id);
+                if (item) {
+                    item.quantity = quantity > 0 ? quantity : 1;
+                    saveCart();
+                    displayCart();
+                }
+            }
+
+            // კალათის შენახვა
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // კალათის განახლების ღილაკი
+            updateCartBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                displayCart();
+            });
+
+            // ფასდაკლების კოდის ფორმა
+            document.getElementById('coupon-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('ფასდაკლების კოდი მუშაობს რეალურ საიტზე');
+            });
+
+            // საწყისი კალათის ჩატვირთვა
+            displayCart();
+        });
+        const updateCartBtn = document.getElementById('update-cart');
+        if (updateCartBtn) {
+            updateCartBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                displayCart();
+            });
+        }
+    
+    </script>
+</body>
+</html>

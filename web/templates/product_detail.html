@@ -1,0 +1,206 @@
+{% load static %}
+{% load my_filters %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>GEXARGE | პროდუქცია</title>
+    
+        <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/favicon.png' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    
+    </head>
+<body>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	{% include "staticpages/header.html" %}
+	
+	
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text font-alk-rounded">
+						<p>GEXARGE</p>
+						<h1>პროდუქციის განხილვა</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	{% block content %}
+		<div class="single-product mt-150 mb-150">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="owl-carousel owl-theme product-gallery">
+							{% if product.image %}
+								<div class="item">
+									<img src="{{ product.image.url }}" alt="{{ product.name }}">
+								</div>
+							{% endif %}
+							{% for image in product.images.all %}
+								<div class="item">
+									<img src="{{ image.image.url }}" alt="Photo {{ forloop.counter }}">
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="col-md-7">
+						<div class="single-product-content font-alk-rounded">
+							<h3 class="font-alk-rounded">{{ product.name }}</h3>
+							<p>{{ product.description }}</p>
+		
+							
+							{% with discount=product|get_discount:today %}
+								<p class="single-product-pricing">
+									<span>1 ცალი</span>
+									{% if discount %}
+										{% if discount|days_left > 0 %}
+											<del>{{ product.price }} ₾</del>
+											<span class="text-danger">
+												{{ product|discounted_price:today }} ₾
+											</span>
+											<small class="text-muted">
+												დარჩენილია {{ discount|days_left }} დღე
+											</small>
+										{% else %}
+											<span class="price">{{ product.price }} ₾</span>
+										{% endif %}
+									{% else %}
+										<span class="price">{{ product.price }} ₾</span>
+									{% endif %}
+								</p>
+							{% endwith %}
+		
+							<p class="single-product-pricing">
+								<span>საწყობში {{ product.storage_quantity }}</span>
+							</p>
+		
+							<div class="single-product-form">
+								<button class="cart-btn add-to-cart" disabled
+										data-id="{{ product.code }}"
+										data-name="{{ product.name }}"
+										data-price="{{ product.price }}"
+										data-image="{{ product.image }}">
+									<i class="fas fa-shopping-cart"></i> დამატება მალე
+								</button>
+								<div class="settings">
+									<p><strong>კოდი: </strong>{{ product.code }}</p>
+									<p><strong>გატეგორია: </strong>{{ product.filter_setting }}</p>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	<!-- end single product -->
+
+	<!-- more products
+	<div class="more-products mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Related</span> Products</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+						</div>
+						<h3>Strawberry</h3>
+						<p class="product-price"><span>Per Kg</span> 85$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
+						</div>
+						<h3>Berry</h3>
+						<p class="product-price"><span>Per Kg</span> 70$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
+						</div>
+						<h3>Lemon</h3>
+						<p class="product-price"><span>Per Kg</span> 35$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- end more products -->
+
+	
+
+	
+	{% include "staticpages/footer.html" %}
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.meanmenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/sticker.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/carts.js' %}"></script>
+
+    <script src="https://kit.fontawesome.com/8340299b99.js" crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function(){
+		$('.product-gallery').owlCarousel({
+			loop: true,           // უსასრულო ციკლი
+			margin: 5,           // სურათებს შორის მანძილი
+			nav: true,            // ნავიგაციის ისრები
+			dots: false,
+			items: 1,            // ინდიკატორები (წერტილები)
+			responsive: {         // რესპონსიულობა
+				0: { items: 1 },   // მობილური: 1 სურათი
+				600: { items: 1 }, // ტაბლეტი: 2 სურათი
+				1000: { items: 1 } // დესკტოპი: 3 სურათი
+			}
+		});
+	});
+	</script>
+
+</body>
+</html>
