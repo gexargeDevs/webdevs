@@ -5,16 +5,19 @@ from django.middleware.csrf import get_token
 from django.core.mail import send_mail
 from django.http import JsonResponse
 def index(request):
-
     products = Product.objects.all()
-    filter_settings = set(p.filter_setting for p in products if p.filter_setting)
+
+    # ერთნაირი filter_setting-ზე მხოლოდ ერთი პროდუქტის გამოტანა
+    filter_data = {}
+    for product in products:
+        if product.filter_setting and product.filter_setting not in filter_data:
+            filter_data[product.filter_setting] = product.image
 
     context = {
-        'filter_settings': filter_settings
+        'filter_data': filter_data
     }
 
     return render(request, 'index.html', context)
-
 def about(request):
     return render(request, 'about.html')
 
@@ -32,13 +35,11 @@ def product(request):
         products = Product.objects.all()
 
     filter_settings = set(p.filter_setting for p in Product.objects.all() if p.filter_setting)
-    sab_filter = set(p.filter_detal for p in Product.objects.all() if p.filter_detal)
 
     context = {
         'product': products,
         'filter_settings': filter_settings,
         'active_filter': filter_value,
-        'sub_filter': sab_filter,
         'today': date.today(),  
     }
     return render(request, 'products.html', context)

@@ -69,11 +69,6 @@ class Product(models.Model):
         verbose_name="ფილტრის პარამეტრი",
         blank=True
     )
-    filter_detal = models.CharField(
-        max_length=70,
-        verbose_name="ფილტრის პარამეტრი (ფსევდო)",
-        blank=True
-    )
     code = models.CharField(
         max_length=5,
         unique=True,

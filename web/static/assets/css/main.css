@@ -1438,36 +1438,22 @@ html, body {
   opacity: 0.6;
 }
 
-.hero-text p.subtitle {
+.subtitle {
   color: #F28123;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 7px;
-  font-size: 15px;
+  font-size: 20px;
   background: #012738;
-  padding: 12px 15px;
+  padding: 12px 35px;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   width: fit-content;
   font-family: 'ALK Rounded';
 
 }
 
-.hero-text h1 {
-  font-size: 50px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #fff;
-  background: #012738;
-  padding: 12px 15px;
-  border-radius: 5px;
-  width: fit-content;
-  margin: 13px auto;
-  font-family: 'ALK Rounded';
 
-
-
-}
 
 .hero-area div {
   height: 100%;
